@@ -41,6 +41,7 @@ wireless() {
 
 volume() {
     # TODO volume level icons
+    # TODO mute icon
     VOLUME=$(amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]%')
     echo -e "\uf028 $VOLUME%  "
 }

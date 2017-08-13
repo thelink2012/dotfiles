@@ -5,7 +5,11 @@ SESSION=${1:-openbox}
 #pgrep redshift &> /dev/null || redshift -l -12.90:-38.42 &> /dev/null &
 ~/.fehbg &
 ~/bin/bar &
-xss-lock -- ~/bin/lock
+xss-lock -- ~/bin/lock &
+xbindkeys &
+
+# Configure Thinkpad keyboard layout 
+setxkbmap -model pc105 -layout us,us -variant altgr-intl,intl -option grp:caps_toggle,grp_led:caps,compose:menu
 
 case $SESSION in
     openbox) exec openbox-session;;
