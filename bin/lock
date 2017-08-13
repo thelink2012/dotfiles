@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Using i3lock-blur fork
+i3lock --fuzzy
+
