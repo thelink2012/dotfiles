@@ -5,7 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PS1="\e[1;32m[\W]\e[0m$ "
+green="\e[1;32m"
+reset="\e[0m"
+export PS1="\[$green\][\W]\[$reset\]$ "
 
 # Environ
 export EDITOR=vim

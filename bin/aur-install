@@ -1,0 +1,6 @@
+#!/bin/sh
+AUR_NAME=$1
+SRC_DIR=${2:-~/builds/$AUR_NAME}
+cd $SRC_DIR || exit $?
+less -K PKGBUILD || exit $?
+makepkg -is || exit $?
