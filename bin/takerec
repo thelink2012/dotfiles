@@ -1,0 +1,123 @@
+#!/bin/sh
+filename=/tmp/takerec.webm
+filepid=/tmp/takerec.pid
+fileurl=/tmp/takerec.url
+sizelimit=10M
+
+notify() {
+    message="$1"
+    echo "$message"
+    notify-send takerec "$message"
+}
+
+ensure_ffmpeg() {
+    pid=$1
+    if [[ "$(ps -p $pid -o comm=)_" -ne 'ffmpeg_' ]]; then
+        notify "$filepid does not store a ffmpeg process"
+        return 1
+    fi
+}
+
+do_status() {
+    if [[ ! -e $filepid ]]; then
+        echo "not recording"
+        return 0
+    fi
+
+    pid=$(cat $filepid)
+    ensure_ffmpeg $pid || {
+        echo "ffmpeg has been killed manually"
+        # perform restore
+        rm $filepid
+        return 0
+    }
+
+    echo "recording"
+    return 0
+}
+
+do_start() {
+    if [[ -e $filepid ]]; then
+        notify "$filepid already exists"
+        return 1
+    fi
+
+    # x264
+    #ffmpeg -f x11grab -video_size 1600x900 -framerate 30 -i $DISPLAY -f alsa -i default -s 1280x720 -r 30 -c:v libx264 -preset:v veryfast -b:v 2000k -crf 24 -c:a libopus -b:a 128k -y -fs $sizelimit $filename &
+
+    # VP8
+    ffmpeg -f x11grab -video_size 1600x900 -framerate 30 -i $DISPLAY -f alsa -i default -s 1280x720 -r 30 -c:v libvpx -crf 24 -b:v 2000k -deadline realtime -c:a libopus -b:a 128k -y -fs $sizelimit $filename &
+
+    echo $! >$filepid
+}
+
+do_stop() {
+    if [[ ! -e $filepid ]]; then
+        notify "$filepid does not exist"
+        return 1
+    fi
+
+    pid=$(cat $filepid)
+    ensure_ffmpeg $pid || return $?
+
+    notify "uploading..."
+
+    kill -2 $pid  # SIGINT
+    sleep 1
+
+    curl -sT- https://p.iotek.org < $filename > $fileurl || {
+        notify "failed to upload recording"
+        return 1
+    }
+
+    url="$(cat $fileurl).webm"
+    echo $url |  xclip -sel c -i
+    echo $url
+    notify-send "recording uploaded" $url
+
+    rm $filepid
+}
+
+do_discard() {
+    if [[ ! -e $filepid ]]; then
+        notify "$filepid does not exist"
+        return 1
+    fi
+
+    pid=$(cat $filepid)
+    ensure_ffmpeg $pid || return $?
+
+    kill -2 $pid  # SIGINT
+    sleep 1
+
+    rm $filepid
+}
+
+do_usage() {
+    echo "usage: $0 [start|stop|discard|status]"
+}
+
+if [[ "$#" -ne 1 ]]; then
+    do_usage
+    exit 1
+fi
+
+case $1 in
+    "start")
+        do_start || exit $?
+        ;;
+    "stop")
+        do_stop || exit $?
+        ;;
+    "discard")
+        do_discard || exit $?
+        ;;
+    "status")
+        do_status || exit $?
+        ;;
+    *)
+        do_usage
+        exit 1
+        ;;
+esac
+

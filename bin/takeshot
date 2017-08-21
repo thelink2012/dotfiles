@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e 
+window=${1:-root}
+filename=$(mktemp -u).png
+import -window $window $filename
+xclip -sel c -t image/png -i $filename
+rm $filename
