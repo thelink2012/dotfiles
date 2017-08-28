@@ -13,6 +13,5 @@ compinit
 
 export PROMPT="%B%F{green}[%1~]%b%f$ "
 
-source ~/.environment
 source ~/.aliases
 
