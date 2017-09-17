@@ -1,7 +1,24 @@
 #!/bin/sh
-set -e 
+
+notify() {
+    message="$1"
+    echo "$message"
+    notify-send takeshot "$message"
+}
+
 window=${1:-root}
 filename=$(mktemp -u).png
-import -window $window $filename
-xclip -sel c -t image/png -i $filename
+tempurl=$(mktemp -u)
+
+import $filename
+#xclip -sel c -t image/png -i $filename
+curl -sT- https://p.iotek.org < $filename > $tempurl ||  {
+    notify "failed to upload screenshot"
+    exit 1
+}
+
+echo "$(cat $tempurl).png" | xclip -sel c -i
+notify "screenshot uploaded successfully"
+
 rm $filename
+rm $tempurl

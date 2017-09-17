@@ -1,4 +1,4 @@
 #!/bin/sh
 AUR_NAME=$1
-DEST_DIR=${2:-~/builds/$AUR_NAME}
+DEST_DIR=${2:-~/arch/pkgs/$AUR_NAME}
 git clone "https://aur.archlinux.org/$AUR_NAME.git" $DEST_DIR

@@ -53,3 +53,11 @@ augroup END
 set guioptions-=T
 set guioptions-=r
 
+" Plugins via vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'dikiaap/minimalist'
+Plug 'sjl/badwolf'
+call plug#end()
+colorscheme badwolf
+
+

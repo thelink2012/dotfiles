@@ -5,6 +5,7 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias putclip='xclip -i -sel clipboard'
 alias getclip='xclip -o -sel clipboard'
+alias getsub='subberthehut -l pob --same-name'
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
