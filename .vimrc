@@ -16,6 +16,7 @@ set relativenumber
 " HTML-specific settings
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType xml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType tex setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Use ENTER to disable highlighting
 nnoremap <silent> <enter> :noh<cr><esc>

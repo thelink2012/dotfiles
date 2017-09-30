@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SESSION=${1:-openbox}
+SESSION=${1:-i3}
 
 pgrep redshift &> /dev/null || redshift -l -12.90:-38.42 &> /dev/null &
 ~/.fehbg &

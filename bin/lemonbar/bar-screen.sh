@@ -46,12 +46,32 @@ volume() {
     echo -e "\uf028 $VOLUME%  "
 }
 
+workspace() {
+    i3-msg -t get_workspaces | python3 ~/bin/lemonbar/parse-workspace-info | while read -r line; do
+        # num, name, visible, focused, urgent
+        params=($line)
+        if [ "${params[3]}" -eq "1" ]; then # focused
+            echo -n "%{B#394E63}"
+        elif [ "${params[4]}" -eq "1" ]; then # urgent
+            echo -n "%{B#B00E0E}"
+        else
+            echo -n "%{B#202933}"
+        fi
+        echo -n " ${params[1]} "
+    done
+    echo -n "%{B-}"
+}
+
 while true; do
     DATETIME=$(clock)
     BATTERY=$(battery)
     WLAN=$(wireless)
     VOLUME=$(volume)
-    echo -e "%{c}$DATETIME%{r}$WLAN$VOLUME$BATTERY"
-    sleep 5
+    WORKSPACE=$(workspace)
+    echo -e "%{l}$WORKSPACE%{c}$DATETIME%{r}$WLAN$VOLUME$BATTERY"
+    sleep 1
 done
+
+# TODO jezz, rewrite this in Python
+
 
