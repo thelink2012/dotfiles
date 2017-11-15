@@ -2,10 +2,11 @@ export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
 export PATH=$HOME/bin:$PATH
+export HOST=$(hostname -s)
 
 # Python Environment
 VIRTUAL_ENV_DISABLE_PROMPT=1
-source $HOME/.pythonenv/bin/activate
+[ -e $HOME/.pythonenv ] && source $HOME/.pythonenv/bin/activate
 unset VIRTUAL_ENV_DISABLE_PROMPT
 
 # Go Environment
