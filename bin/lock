@@ -1,2 +1,2 @@
 #!/bin/sh
-i3lock -leu -c 000000
+i3lock -eu -c 000000

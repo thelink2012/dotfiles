@@ -1,12 +1,19 @@
 export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
-export PATH=~/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
-# Use local virtualenv instead of global site packages
+# Python Environment
 VIRTUAL_ENV_DISABLE_PROMPT=1
-source ~/.pythonenv/bin/activate
+source $HOME/.pythonenv/bin/activate
 unset VIRTUAL_ENV_DISABLE_PROMPT
+
+# Go Environment
+export GOPATH=$HOME/.goenv
+export PATH=$PATH:$GOPATH/bin
+
+# Rust Environment
+export PATH=$PATH:$HOME/.cargo/bin
 
 # initialize bash if we're running bash
 if [ -n "$BASH" ]; then

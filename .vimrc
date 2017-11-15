@@ -61,4 +61,7 @@ Plug 'sjl/badwolf'
 call plug#end()
 colorscheme badwolf
 
+" Auto reload changed files.
+" Do this when the cursor is idle or we switch to another buffer.
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 
