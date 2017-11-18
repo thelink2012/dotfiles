@@ -7,6 +7,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+let g:detectindent_preferred_expandtab = 1 " DetectIndent option
+let g:detectindent_preferred_indent = 4    " DetectIndent option
 
 " Eye candy settings
 filetype plugin on
@@ -56,12 +58,15 @@ set guioptions-=r
 
 " Plugins via vim-plug
 call plug#begin('~/.vim/plugged')
-Plug 'dikiaap/minimalist'
 Plug 'sjl/badwolf'
+Plug 'ciaranm/detectindent'
 call plug#end()
 colorscheme badwolf
 
 " Auto reload changed files.
 " Do this when the cursor is idle or we switch to another buffer.
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+
+" Detect indentation of current file using 'ciaranm/detectindent'.
+autocmd BufReadPost * :DetectIndent
 

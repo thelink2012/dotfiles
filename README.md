@@ -90,11 +90,14 @@ $ pacman -S zsh zsh-completions
 
 ### Terminal
 
+I like **st** with my own set of patches.
+
 ```
-$ pacaur -S ttf-inconsolata-g xst-git
+$ git clone https://github.com/thelink2012/st
+$ cd st && makepkg -sic
 ```
 
-Fonts, shell and colors were configured in `~/.Xresources`.
+Fonts, shell and colors are configured in `~/.Xresources`.
 
 ### Application Launcher
 
@@ -130,5 +133,15 @@ $ pacman -S mpv
 
 ```
 $ pacman -S pinta
+```
+
+### Others
+
+Just to remember a few useful packages :)
+
+```
+$ pacaur -S dragon-git
+$ pacaur -S dspdfviewer
+$ pacaur -S entr
 ```
 
