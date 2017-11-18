@@ -93,6 +93,7 @@ $ pacman -S zsh zsh-completions
 I like **st** with my own set of patches.
 
 ```
+$ pacaur -S ttf-inconsolata-g
 $ git clone https://github.com/thelink2012/st
 $ cd st && makepkg -sic
 ```
