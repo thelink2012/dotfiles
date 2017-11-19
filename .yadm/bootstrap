@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# This bootstrap file is idempotent. 
+# No matter how many times you run it, the effect should be the same.
+
+# Download vim-plug
+if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
+    echo "Downloading vim-plug..."
+    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+

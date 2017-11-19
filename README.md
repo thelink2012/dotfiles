@@ -2,6 +2,8 @@
 
 This repository is managed with [yadm-git](https://github.com/TheLocehiliosan/yadm)<sup>AUR</sup>. Of course, you can just `git clone` it, no big deal.
 
+After cloning, run `yadm bootstrap` or execute `.yadm/bootstrap` manually to do a few more nice steps (e.g. download vim-plug).
+
 As follows are instructions, specially for myself, on how to setup a system capable of using all the dots in here.
 
 ## aliases
@@ -28,10 +30,6 @@ Every `xinitrc` dependency is optional. The following is a list of packages and 
  - **xss-lock-git**<sup>AUR</sup> spawns `~/bin/lock` over time. See its dependencies for more.
  - **xbindkeys** setups many key bindings.
  - **redshift-minimal**<sup>AUR</sup> adjusts the color temperature of the screen according to time and location.
- 
-## vimrc
-
-Notice _vimplug_ is included in this repo. So, all one needs is `:PlugInstall` on the next vim startup.
 
 ## xbindkeysrc
 
