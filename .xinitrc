@@ -7,8 +7,13 @@ SESSION=${1:-i3}
 }
 
 # Start lemonbar
-[ -e $HOME/bin/bar ] && {
+command -v lemonbar && [ -e $HOME/bin/bar ] && {
     $HOME/bin/bar &
+}
+
+# Setup Xresources
+[ -e $HOME/.Xresources ] && {
+    xrdb -merge -I$HOME $HOME/.Xresources
 }
 
 # Start screen locker

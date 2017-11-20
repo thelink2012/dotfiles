@@ -10,6 +10,10 @@
 "amixer set Master 1%-"
    XF86AudioLowerVolume
 
+# Play/Pause
+"playerctl play-pause"
+    XF86AudioPlay
+
 # Print Scr.
 "takeshot"
     m:0x0 + c:107

@@ -63,11 +63,21 @@ workspace() {
 }
 
 while true; do
-    DATETIME=$(clock)
-    BATTERY=$(battery)
-    WLAN=$(wireless)
-    VOLUME=$(volume)
-    WORKSPACE=$(workspace)
+    if [ "$HOST" = mos ]; then
+        # Those functions are very specific to Thinkpads, will let it run
+        # only in my main laptop.
+        DATETIME=$(clock)
+        BATTERY=$(battery)
+        WLAN=$(wireless)
+        VOLUME=$(volume)
+        WORKSPACE=$(workspace)
+    else
+        DATETIME=$(clock)
+        BATTERY=""
+        WLAN=""
+        VOLUME=""
+        WORKSPACE=$(workspace)
+    fi
     echo -e "%{l}$WORKSPACE%{c}$DATETIME%{r}$WLAN$VOLUME$BATTERY"
     sleep 1
 done

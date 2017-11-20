@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+import sys
+import json
+
+def main():
+    jnput = sys.stdin.read()
+    data = json.loads(jnput)
+    for workspace in data:
+        num = workspace['num']
+        name = workspace['name']
+        visible = bool(workspace['visible'])
+        focused = bool(workspace['focused'])
+        urgent = bool(workspace['urgent'])
+        print(num, name, int(visible), int(focused), int(urgent))
+
+if __name__ == "__main__":
+    main()
+ 
