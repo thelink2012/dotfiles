@@ -1,4 +1,5 @@
 set nocompatible
+set encoding=utf-8
 
 " Setup indentation
 filetype indent on
@@ -37,10 +38,11 @@ inoremap <Left> <nop>
 inoremap <Right> <nop>
 
 " Enable CTRL-C, CTRL-V, CTRL-X for controlling X Clipboard
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
+"vmap <C-c> "+yi
+"vmap <C-x> "+c
+"vmap <C-v> c<ESC>"+p
+"imap <C-v> <C-r><C-o>+
+" Actually, just enable paste for CTRL+SHIFT+V
 
 " Visual lines instead of hard lines 
 "noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -60,6 +62,11 @@ set guioptions-=r
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'ciaranm/detectindent'
+Plug 'ConradIrwin/vim-bracketed-paste'
+if hostname() == 'sun'
+    Plug 'vim-scripts/indentpython.vim'
+    "Plug 'Valloric/YouCompleteMe'
+endif
 call plug#end()
 colorscheme badwolf
 
