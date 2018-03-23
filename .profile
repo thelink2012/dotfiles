@@ -8,6 +8,8 @@ export HOST=$(hostname -s)
 VIRTUAL_ENV_DISABLE_PROMPT=1
 [ -e $HOME/.pythonenv ] && source $HOME/.pythonenv/bin/activate
 unset VIRTUAL_ENV_DISABLE_PROMPT
+export PIPENV_IGNORE_VIRTUALENVS=1
+export PIPENV_VENV_IN_PROJECT=1
 
 # Go Environment
 export GOPATH=$HOME/.goenv
