@@ -1,0 +1,1 @@
+exec xclip -i -sel clipboard
