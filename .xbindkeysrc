@@ -1,13 +1,13 @@
 # Mute
-"amixer set Master toggle; amixer set Speaker unmute;"
+"audio-control mute toggle"
     XF86AudioMute
 
 # Increase volume
-"amixer set Master 1%+"
+"audio-control set-volume +1%"
    XF86AudioRaiseVolume
 
 # Decrease volume
-"amixer set Master 1%-"
+"audio-control set-volume -1%"
    XF86AudioLowerVolume
 
 # Play/Pause

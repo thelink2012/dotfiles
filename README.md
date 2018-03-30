@@ -33,7 +33,7 @@ Every `xinitrc` dependency is optional. The following is a list of packages and 
 
 ## xbindkeysrc
 
- - **alsa-utils** is required for the mute and volume media buttons.
+ - **pulseaudio** is required for the mute and volume media buttons.
  - **playerctl** is required for the play/pause media button.
  - Taking print screens calls `~/bin/takeshot`. See its requirements for details.
 
@@ -71,6 +71,10 @@ This takes a recording of the screen and uploads somewhere. It requires **curl**
 ### takeshot
 
 Just like `takerec`, but takes screenshots. Requires **curl**, **xclip**, **imagemagick** and **libnotify**.
+
+### audio-control
+
+Linux audio handling is too complicated. So I made my own controller, which probably only works for me. How nice, eh? Requires **pulseaudio**.
 
 ## Intrusive Dotfiles
 
