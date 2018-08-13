@@ -1,0 +1,19 @@
+#!/bin/sh
+
+notify() {
+    message="$1"
+    echo "$message"
+    notify-send takefile "$message"
+}
+
+tempurl=$(mktemp -u)
+
+curl -nsF "u=@$1" https://tmp.thelink2012.xyz  > $tempurl ||  {
+    notify "failed to upload file"
+    exit 1
+}
+
+echo "$(cat $tempurl)" | xclip -sel c -i
+notify "file uploaded successfully"
+
+rm $tempurl

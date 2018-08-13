@@ -148,3 +148,27 @@ $ pacaur -S dspdfviewer
 $ pacaur -S entr
 ```
 
+## Other System Tweaks
+
+Those are not part of the dotfiles and must be done manually.
+
+### Thinkpad T420 Trackpoint Behaviour
+
+The maintainers of `libinput` decided to change the TrackPoint code for the `1.9` version. The problem is this change is quite bad (at least for my muscle memory).
+
+The following are instructions to revert to the old behaviour:
+
+```
+pacman -U https://archive.archlinux.org/packages/l/libinput/libinput-1.8.3-1-x86_64.pkg.tar.xz
+pacman -U https://archive.archlinux.org/packages/x/xf86-input-libinput/xf86-input-libinput-0.26.0-1-x86_64.pkg.tar.xz
+# Note: xf86-input-libinput depends on libinput so we also keep using the version that was built during the libinput 1.8 era.
+```
+
+Then edit `/etc/pacman.conf` to freeze these two packages.
+
+**References:**
+
++ https://bugzilla.redhat.com/show_bug.cgi?id=1509017
++ https://bugs.freedesktop.org/show_bug.cgi?id=103959
++ https://bbs.archlinux.org/viewtopic.php?id=231494
+

@@ -1,5 +1,5 @@
-# These are my own configuration
 export PROMPT="%B%F{green}[%1~]%b%f$ "
+export ABDUCO_CMD=zsh
 source ~/.aliases
 fpath=(~/.zsh/completion $fpath)
 
