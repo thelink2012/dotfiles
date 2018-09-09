@@ -63,10 +63,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'ciaranm/detectindent'
 Plug 'ConradIrwin/vim-bracketed-paste'
-if hostname() == 'sun'
-    Plug 'vim-scripts/indentpython.vim'
-    "Plug 'Valloric/YouCompleteMe'
-endif
+Plug 'vim-scripts/a.vim'
 call plug#end()
 colorscheme badwolf
 

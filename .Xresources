@@ -1,5 +1,5 @@
 ! Simple Terminal
-st.font: Inconsolata:pixelsize=15:antialias:autohint
+st.font: Inconsolata:pixelsize=15:antialias:autohint                       
 st.foreground: #dedede
 st.background: #2b2b2b
 st.cursorfg: #dedede

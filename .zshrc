@@ -28,3 +28,6 @@ zle -N down-line-or-beginning-search
 [[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
 [[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
 
+
+# added by travis gem
+[ -f /home/thelink2012/.travis/travis.sh ] && source /home/thelink2012/.travis/travis.sh
