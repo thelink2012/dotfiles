@@ -3,7 +3,6 @@ export VISUAL=vim
 export PAGER=less
 export HOST=$(hostname -s)
 export PATH=$HOME/bin:$PATH
-#export MANPATH="/usr/local/man:/usr/local/share/man:/usr/share/man:/usr/man"
 
 # Python Environment
 VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -23,6 +22,11 @@ export PATH=$PATH:$HOME/.cargo/bin
 command -v ruby && {
     export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
     export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+}
+
+# Competitive Programming Environment
+[ -d "$HOME/dev/cp/bin" ] && {
+    export PATH="$PATH:$HOME/dev/cp/bin"
 }
 
 # Travis Ruby Gem
