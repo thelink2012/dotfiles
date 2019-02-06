@@ -20,3 +20,7 @@ st.color12: #729fcf
 st.color13: #ad7fa8
 st.color14: #34e2e2
 st.color15: #eeeeec
+
+! Rofi
+rofi.theme: android_notification
+
