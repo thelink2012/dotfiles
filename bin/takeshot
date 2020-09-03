@@ -11,14 +11,13 @@ filename=$(mktemp -u).png
 tempurl=$(mktemp -u)
 
 import $filename
-#xclip -sel c -t image/png -i $filename
-curl -nsF "u=@$filename" https://tmp.thelink2012.xyz  > $tempurl ||  {
-    notify "failed to upload screenshot"
-    exit 1
-}
-
-echo "$(cat $tempurl)" | xclip -sel c -i
-notify "screenshot uploaded successfully"
+xclip -sel c -t image/png -i $filename
+#curl -nsF "u=@$filename" https://tmp.thelink2012.xyz  > $tempurl ||  {
+#    notify "failed to upload screenshot"
+#    exit 1
+#}
+#echo "$(cat $tempurl)" | xclip -sel c -i
+#notify "screenshot uploaded successfully"
 
 rm $filename
-rm $tempurl
+#rm $tempurl
