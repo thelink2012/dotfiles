@@ -2,7 +2,7 @@ export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
 export HOST=$(hostname -s)
-export PATH=$HOME/bin:$PATH
+export PATH="$HOME/bin:$PATH"
 
 # Python Environment
 VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -24,14 +24,6 @@ command -v ruby && {
     export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 }
 
-# Competitive Programming Environment
-[ -d "$HOME/dev/cp/bin" ] && {
-    export PATH="$PATH:$HOME/dev/cp/bin"
-}
-
-# Travis Ruby Gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 # Android Environment
 [ -d "/opt/android-sdk" ] && {
     export ANDROID_HOME="/opt/android-sdk"
@@ -39,8 +31,12 @@ command -v ruby && {
     export PATH="$PATH:$ANDROID_HOME/platform-tools"
 }
 
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # initialize bash if we're running bash
 if [ -n "$BASH" ]; then
     [ -r "$HOME/.bashrc" ] && . ~/.bashrc
 fi
-

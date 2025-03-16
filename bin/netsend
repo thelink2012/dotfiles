@@ -1,2 +1,0 @@
-#!/bin/sh
-exec nc -q 0 $1 5555

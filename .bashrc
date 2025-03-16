@@ -1,9 +1,15 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-green="\e[1;32m"
-reset="\e[0m"
-export PS1="\[$green\][\W]\[$reset\]$ "
-export ABDUCO_CMD=bash
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
 
 source ~/.aliases

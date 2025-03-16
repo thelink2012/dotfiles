@@ -1,2 +1,0 @@
-#/bin/sh
-exec ~/bin/lemonbar/bar-screen.sh | lemonbar -F "#d3dae3" -f "DejaVu Sans:size=9:bold" -f "FontAwesome:size=10"
